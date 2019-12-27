@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "400209752052",
+    "firebase_url": "https://vloggerspk.firebaseio.com",
+    "project_id": "vloggerspk",
+    "storage_bucket": "vloggerspk.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:400209752052:android:770ff96789e502425493a1",
+        "android_client_info": {
+          "package_name": "com.example.vloggerpk"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "400209752052-cdbnhgqdt00qvs3ukqd6c9f1f6e3smem.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKy4Iq3mxDVFZimMN_QvZHNVAHkNSg9VE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "400209752052-cdbnhgqdt00qvs3ukqd6c9f1f6e3smem.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "400209752052-9jn401nv5ffra1rllb1ar1nfnmteben2.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vloggerpk"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

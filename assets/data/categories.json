@@ -1,0 +1,26 @@
+[
+    {
+        "id": "1",
+        "stock": "23",
+        "category": "Mobile Phones",
+        "category_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRGxvyONK8Kxv6reR1sprd5k6UdGQ_unSg7JarzOUgaNsU8MKtI"
+    },
+    {
+        "id": "2",
+        "stock": "23",
+        "category": "Garments",
+        "category_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxj7rAhQh0qv1WNMBxRCS0VOno31rwj7EiadsqNJDGb8Xo5yfN"
+    },
+    {
+        "id": "3",
+        "stock": "23",
+        "category": "Glasses",
+        "category_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSGGrDAnkUzBcv8_yZdd2qlRkT1bDWgKg0P8mkA2moxfFcRhId1"
+    },
+    {
+        "id": "4",
+        "stock": "23",
+        "category": "Shoes",
+        "category_image": "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRo8kS_VEJihIb1t6kggNooN1-vcheEbCKqGzEwZRPr6A7lvcZD"
+    }
+]
