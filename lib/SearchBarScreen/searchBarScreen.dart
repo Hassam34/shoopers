@@ -75,8 +75,8 @@ class SearchBarScreen extends State<SearchBody> {
                   child: Text(
                     "Hello I am Treva What would you like to Search ?",
                     style: TextStyle(
-                      fontFamily: 'HelveticaMedium',
-                      fontSize: 30,
+                      fontFamily: 'Helvetica',
+                      fontSize: 25,
                       // fontWeight: FontWeight.bold,
                       color: Colors.black,
                     ),
@@ -84,7 +84,7 @@ class SearchBarScreen extends State<SearchBody> {
                 ),
                 Container(
                   height: 100,
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.only(left:10,right: 10,bottom: 10),
                   child: SearchBar(
                     hintText: "Find you want",
                     
@@ -105,8 +105,8 @@ class SearchBarScreen extends State<SearchBody> {
                         child: Text(
                           "Favorite",
                           style: TextStyle(
-                            fontFamily: 'HelveticaBold',
-                            fontSize: 18,
+                            fontFamily: 'Helvetica',
+                            fontSize: 20,
                             // fontWeight: FontWeight.bold,
                             // color: Colors.red,
                           ),
@@ -116,42 +116,42 @@ class SearchBarScreen extends State<SearchBody> {
                         flex: 1,
                         child: Container(
                           height: 1,
-                          decoration: new BoxDecoration(
-                              border:
-                                  Border.all(width: 1, color: Colors.grey[300]),
-                              //new Color.fromRGBO(255, 0, 0, 0.0),
-                              borderRadius: new BorderRadius.only(
-                                topLeft: const Radius.circular(20.0),
-                                topRight: const Radius.circular(20.0),
-                                bottomLeft: const Radius.circular(20.0),
-                                bottomRight: const Radius.circular(20.0),
-                              ),
-                              color: Colors.grey[300]),
+                          // decoration: new BoxDecoration(
+                          //     border:
+                          //         Border.all(width: 1, color: Colors.grey[300]),
+                          //     //new Color.fromRGBO(255, 0, 0, 0.0),
+                          //     borderRadius: new BorderRadius.only(
+                          //       topLeft: const Radius.circular(20.0),
+                          //       topRight: const Radius.circular(20.0),
+                          //       bottomLeft: const Radius.circular(20.0),
+                          //       bottomRight: const Radius.circular(20.0),
+                          //     ),
+                          //     color: Colors.grey[300]),
                         ),
                       ),
                       Container(
                         // padding: EdgeInsets.only(top: 3),
-                        decoration: new BoxDecoration(
-                            border:
-                                Border.all(width: .5, color: Colors.grey[100]),
-                            //new Color.fromRGBO(255, 0, 0, 0.0),
-                            borderRadius: new BorderRadius.only(
-                              topLeft: const Radius.circular(20.0),
-                              topRight: const Radius.circular(20.0),
-                              bottomLeft: const Radius.circular(20.0),
-                              bottomRight: const Radius.circular(20.0),
-                            ),
-                            color: Colors.grey[100]),
+                        // decoration: new BoxDecoration(
+                        //     border:
+                        //         Border.all(width: .5, color: Colors.grey[100]),
+                        //     //new Color.fromRGBO(255, 0, 0, 0.0),
+                        //     borderRadius: new BorderRadius.only(
+                        //       topLeft: const Radius.circular(20.0),
+                        //       topRight: const Radius.circular(20.0),
+                        //       bottomLeft: const Radius.circular(20.0),
+                        //       bottomRight: const Radius.circular(20.0),
+                        //     ),
+                        //     color: Colors.grey[100]),
                         child: Container(
                           padding: EdgeInsets.only(
                               right: 5, left: 5, top: 2, bottom: 2),
                           child: Text(
-                            "See All",
+                            "See all",
                             style: TextStyle(
-                              fontFamily: 'HelveticaMedium',
-                              fontSize: 18,
+                              fontFamily: 'Helvetica',
+                              fontSize: 15,
                               // fontWeight: FontWeight.bold,
-                              color: Colors.grey,
+                              color: Colors.red,
                             ),
                           ),
                         ),
@@ -191,7 +191,7 @@ class SearchBarScreen extends State<SearchBody> {
                                           width: 120,
                                           child: new ClipRRect(
                                             borderRadius:
-                                                new BorderRadius.circular(20.0),
+                                                new BorderRadius.circular(10.0),
                                             child: Image.network(
                                               new_data[index]['image'],
                                               fit: BoxFit.fill,
@@ -229,50 +229,66 @@ class SearchBarScreen extends State<SearchBody> {
                                       // alignment: Alignment.centerLeft,
                                       // padding: EdgeInsets.only(top: 2, left: 6),
                                       child: Text(
-                                        "" + new_data[index]['itemname'] + "",
+                                        "" + new_data[index]['itemname'] ,
                                         style: TextStyle(
                                             fontFamily: 'HelveticaMedium',
                                             fontSize: 12,
-                                            color: Colors.blue
+                                            color: Colors.black
                                             // fontWeight: FontWeight.bold,
                                             ),
                                       ),
                                     ),
                                   ),
                                   Container(
-                                    alignment: Alignment.centerLeft,
-                                    padding: EdgeInsets.all(8),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Text(
-                                          "" + new_data[index]['price'] + "",
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                              fontFamily: 'HelveticaMedium',
-                                              fontSize: 11,
-                                              color: Colors.red
-
-                                              // fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                        Expanded(
-                                          child: Container(),
-                                          flex: 1,
-                                        ),
-                                        Text(
-                                          "" + new_data[index]['ratting'] + "",
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                              fontFamily: 'HelveticaMedium',
-                                              fontSize: 11,
-                                              color: Colors.orange[300]
-
-                                              // fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                      ],
+                                    // padding: EdgeInsets.only(top: 5),
+                                    child: Center(
+                                      // alignment: Alignment.centerLeft,
+                                      // padding: EdgeInsets.only(top: 2, left: 6),
+                                      child: Text(
+                                        "(" + new_data[index]['price']+")",
+                                        style: TextStyle(
+                                            fontFamily: 'HelveticaMedium',
+                                            fontSize: 11,
+                                            color: Colors.grey
+                                            // fontWeight: FontWeight.bold,
+                                            ),
+                                      ),
                                     ),
-                                  )
+                                  ),
+                                  // Container(
+                                  //   alignment: Alignment.centerLeft,
+                                  //   padding: EdgeInsets.all(8),
+                                  //   child: Row(
+                                  //     children: <Widget>[
+                                  //       Text(
+                                  //         "" + new_data[index]['price'] + "",
+                                  //         textAlign: TextAlign.left,
+                                  //         style: TextStyle(
+                                  //             fontFamily: 'HelveticaMedium',
+                                  //             fontSize: 11,
+                                  //             color: Colors.red
+
+                                  //             // fontWeight: FontWeight.bold,
+                                  //             ),
+                                  //       ),
+                                  //       Expanded(
+                                  //         child: Container(),
+                                  //         flex: 1,
+                                  //       ),
+                                  //       Text(
+                                  //         "" + new_data[index]['ratting'] + "",
+                                  //         textAlign: TextAlign.left,
+                                  //         style: TextStyle(
+                                  //             fontFamily: 'HelveticaMedium',
+                                  //             fontSize: 11,
+                                  //             color: Colors.orange[300]
+
+                                  //             // fontWeight: FontWeight.bold,
+                                  //             ),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // )
                                   // )
                                 ],
                               ),

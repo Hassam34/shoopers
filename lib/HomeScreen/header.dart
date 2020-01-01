@@ -63,7 +63,7 @@ class Header extends StatelessWidget {
                       child: Align(
                         alignment: Alignment.topCenter,
                         child: ResponsiveContainer(
-                          heightPercent: 8,
+                          heightPercent: 9,
                           widthPercent: 68,
                           child: Text(
                             "Discover",

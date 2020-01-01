@@ -34,6 +34,7 @@ class _FacebookloginState extends State<Facebooklogin> {
 
   // }
   _loginWithFB() async {
+    print('facebooklogin callled');
     final result = await facebookLogin.logIn(['email', 'public_profile']);
 
     switch (result.status) {

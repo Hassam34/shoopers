@@ -109,12 +109,13 @@ class _BodyState extends State<Body> {
       // color: Colors.red,
       child: Container(
         height: sHeight,
+        margin: EdgeInsets.only(top: 15),
         child: ListView(
           padding: const EdgeInsets.only(left: 8, right: 8, top: 10),
           children: <Widget>[
             GestureDetector(
               child: ResponsiveContainer(
-                heightPercent: 7,
+                heightPercent: 5,
                 widthPercent: 100,
                 child: Container(
                   // color: Colors.grey[200],
@@ -138,7 +139,7 @@ class _BodyState extends State<Body> {
                         ),
                       ),
                       Container(
-                          padding: EdgeInsets.all(10),
+                          padding: EdgeInsets.all(5),
                           child: Text(
                             "Search for your favourite receipes",
                             style: TextStyle(
@@ -175,7 +176,7 @@ class _BodyState extends State<Body> {
 
             Container(
               padding: EdgeInsets.only(
-                top: 10,
+                top: 20,
                 bottom: 8,
               ),
               // color: Colors.,
@@ -183,13 +184,14 @@ class _BodyState extends State<Body> {
                 children: <Widget>[
                   Container(
                     padding: EdgeInsets.only(right: 5),
+                    // margin: EdgeInsets.only(left: 10),
                     child: Text(
                       "Categories",
                       style: TextStyle(
-                        fontFamily: 'HelveticaBold',
-                        fontSize: 18,
+                        fontFamily: 'Helvetica',
+                        fontSize: 20,
                         // fontWeight: FontWeight.bold,
-                        color: Colors.red,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -197,40 +199,41 @@ class _BodyState extends State<Body> {
                     flex: 1,
                     child: Container(
                       height: 1,
-                      decoration: new BoxDecoration(
-                          border: Border.all(width: 1, color: Colors.grey[300]),
-                          //new Color.fromRGBO(255, 0, 0, 0.0),
-                          borderRadius: new BorderRadius.only(
-                            topLeft: const Radius.circular(20.0),
-                            topRight: const Radius.circular(20.0),
-                            bottomLeft: const Radius.circular(20.0),
-                            bottomRight: const Radius.circular(20.0),
-                          ),
-                          color: Colors.grey[300]),
+                      // decoration: new BoxDecoration(
+                      //     border: Border.all(width: 1, color: Colors.grey[300]),
+                      //     //new Color.fromRGBO(255, 0, 0, 0.0),
+                      //     borderRadius: new BorderRadius.only(
+                      //       topLeft: const Radius.circular(20.0),
+                      //       topRight: const Radius.circular(20.0),
+                      //       bottomLeft: const Radius.circular(20.0),
+                      //       bottomRight: const Radius.circular(20.0),
+                      //     ),
+                      //     color: Colors.grey[300]),
                     ),
                   ),
                   Container(
+                    margin: const EdgeInsets.only(left: 5.0),
                     // padding: EdgeInsets.only(top: 3),
-                    decoration: new BoxDecoration(
-                        border: Border.all(width: .5, color: Colors.grey[100]),
-                        //new Color.fromRGBO(255, 0, 0, 0.0),
-                        borderRadius: new BorderRadius.only(
-                          topLeft: const Radius.circular(20.0),
-                          topRight: const Radius.circular(20.0),
-                          bottomLeft: const Radius.circular(20.0),
-                          bottomRight: const Radius.circular(20.0),
-                        ),
-                        color: Colors.grey[100]),
+                    // decoration: new BoxDecoration(
+                    //     border: Border.all(width: .5, color: Colors.grey[100]),
+                    //     //new Color.fromRGBO(255, 0, 0, 0.0),
+                    //     borderRadius: new BorderRadius.only(
+                    //       topLeft: const Radius.circular(20.0),
+                    //       topRight: const Radius.circular(20.0),
+                    //       bottomLeft: const Radius.circular(20.0),
+                    //       bottomRight: const Radius.circular(20.0),
+                    //     ),
+                    //     color: Colors.grey[100]),
                     child: Container(
                       padding:
                           EdgeInsets.only(right: 5, left: 5, top: 2, bottom: 2),
                       child: Text(
-                        "See All",
+                        "See all",
                         style: TextStyle(
-                          fontFamily: 'HelveticaMedium',
-                          fontSize: 18,
+                          fontFamily: 'Helvetica',
+                          fontSize: 15,
                           // fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                          color: Colors.red,
                         ),
                       ),
                     ),
@@ -239,7 +242,8 @@ class _BodyState extends State<Body> {
               ),
             ),
             Container(
-                height: 120,
+                height: 111,
+                // margin: EdgeInsets.only(top:5,bottom: 10),
                 //  width: 160,
                 child: FutureBuilder(
                   future: DefaultAssetBundle.of(context)
@@ -254,28 +258,52 @@ class _BodyState extends State<Body> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
-                          width: 100,
-                          padding: EdgeInsets.only(right: 12),
+                          // width: 100,
+                          margin: EdgeInsets.only(left: 10, right: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.grey[100],
+                            borderRadius: BorderRadius.circular(10),
+                            border: Border.all(
+                              color: Colors.grey,
+                              width:
+                                  0.2, //                   <--- border width here
+                            ),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 4.0,
+                                offset: new Offset(1.0, 1.0),
+                              ),
+                            ]
+                          ),
+                          // padding: EdgeInsets.only(right: 12),
                           child:
                               // Container()
                               Column(
                             children: <Widget>[
-                              Column(
+                              Stack(
                                 children: <Widget>[
                                   GestureDetector(
                                     child: Align(
                                       alignment: Alignment.center,
                                       child: GestureDetector(
                                         child: Container(
-                                          height: 80,
-                                          width: 80,
+                                          height: 110,
+                                          width: 110,
+                                          decoration: BoxDecoration(
+                                              color: Colors.grey[100],
+                                              borderRadius:
+                                                  BorderRadius.circular(10)),
                                           child: new ClipRRect(
-                                            borderRadius:
-                                                new BorderRadius.circular(20.0),
+                                            borderRadius: new BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                topRight: Radius.circular(10)),
                                             child: Image.network(
                                               new_data[index]['category_image'],
-                                              fit: BoxFit.fill,
-                                              height: 250,
+                                              fit: BoxFit.cover,
+                                              height: MediaQuery.of(context)
+                                                  .size
+                                                  .height,
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width,
@@ -296,21 +324,38 @@ class _BodyState extends State<Body> {
                                       );
                                     },
                                   ),
-                                  Container(
-                                    padding: EdgeInsets.only(top: 5),
-                                    child: Center(
+                                  Positioned(
+                                    // padding: EdgeInsets.only(top: 5),
+                                    child: Container(
+                                      height: 20,
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        border: Border.all(
+                                          width: 0.1
+                                        )
+                                        // Colors.black.withOpacity(0.5)
+                                      ),
+                                      child: 
+                                      Center(
                                       // alignment: Alignment.centerLeft,
                                       // padding: EdgeInsets.only(top: 2, left: 6),
                                       child: Text(
                                         "" + new_data[index]['category'] + "",
                                         style: TextStyle(
                                             fontFamily: 'HelveticaMedium',
-                                            fontSize: 10,
-                                            color: Colors.blue
+                                            fontSize: 12,
+                                            color: Colors.black
                                             // fontWeight: FontWeight.bold,
                                             ),
                                       ),
                                     ),
+                                      
+                                      
+                                    ),
+                                    bottom: 0,
+                                    left: 0,
+                                    right: 0,
+                                    
                                   ),
                                 ],
                               ),
@@ -431,7 +476,7 @@ class _BodyState extends State<Body> {
                 ),
             Container(
               padding: EdgeInsets.only(
-                top: 10,
+                top: 20,
                 bottom: 8,
               ),
               // color: Colors.,
@@ -441,11 +486,11 @@ class _BodyState extends State<Body> {
                     padding: EdgeInsets.only(right: 5),
                     child: Text(
                       "Popular Items",
-                      style: TextStyle(
-                        fontFamily: 'HelveticaBold',
-                        fontSize: 18,
+                       style: TextStyle(
+                        fontFamily: 'Helvetica',
+                        fontSize: 20,
                         // fontWeight: FontWeight.bold,
-                        // color: Colors.red,
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -453,40 +498,30 @@ class _BodyState extends State<Body> {
                     flex: 1,
                     child: Container(
                       height: 1,
-                      decoration: new BoxDecoration(
-                          border: Border.all(width: 1, color: Colors.grey[300]),
-                          //new Color.fromRGBO(255, 0, 0, 0.0),
-                          borderRadius: new BorderRadius.only(
-                            topLeft: const Radius.circular(20.0),
-                            topRight: const Radius.circular(20.0),
-                            bottomLeft: const Radius.circular(20.0),
-                            bottomRight: const Radius.circular(20.0),
-                          ),
-                          color: Colors.grey[300]),
-                    ),
+                      ),
                   ),
                   Container(
-                    // padding: EdgeInsets.only(top: 3),
-                    decoration: new BoxDecoration(
-                        border: Border.all(width: .5, color: Colors.grey[100]),
-                        //new Color.fromRGBO(255, 0, 0, 0.0),
-                        borderRadius: new BorderRadius.only(
-                          topLeft: const Radius.circular(20.0),
-                          topRight: const Radius.circular(20.0),
-                          bottomLeft: const Radius.circular(20.0),
-                          bottomRight: const Radius.circular(20.0),
-                        ),
-                        color: Colors.grey[100]),
+                    margin: EdgeInsets.only(left: 5),
+                    // decoration: new BoxDecoration(
+                    //     border: Border.all(width: .5, color: Colors.grey[100]),
+                    //     //new Color.fromRGBO(255, 0, 0, 0.0),
+                    //     borderRadius: new BorderRadius.only(
+                    //       topLeft: const Radius.circular(20.0),
+                    //       topRight: const Radius.circular(20.0),
+                    //       bottomLeft: const Radius.circular(20.0),
+                    //       bottomRight: const Radius.circular(20.0),
+                    //     ),
+                    //     color: Colors.grey[100]),
                     child: Container(
                       padding:
                           EdgeInsets.only(right: 5, left: 5, top: 2, bottom: 2),
                       child: Text(
-                        "See All",
+                        "See all",
                         style: TextStyle(
-                          fontFamily: 'HelveticaMedium',
-                          fontSize: 18,
+                          fontFamily: 'Helvetica',
+                          fontSize: 15,
                           // fontWeight: FontWeight.bold,
-                          color: Colors.grey,
+                          color: Colors.red,
                         ),
                       ),
                     ),
@@ -495,7 +530,13 @@ class _BodyState extends State<Body> {
               ),
             ),
             Container(
-                height: 180,
+                height: 190,
+                padding: EdgeInsets.only(bottom: 5),
+                
+                decoration: BoxDecoration(border: Border.all(
+                  color:Colors.grey[50],
+                  width: 1
+                )),
                 child: FutureBuilder(
                   future: DefaultAssetBundle.of(context)
                       .loadString('assets/data/dummy.json'),
@@ -509,8 +550,26 @@ class _BodyState extends State<Body> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
-                          width: 130,
-                          padding: EdgeInsets.only(right: 12),
+                          width: 140,
+                          margin: EdgeInsets.only(left: 10,right: 10),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                              color: Colors.black,
+                              width: 0.1
+                            ),
+                            
+                            borderRadius: BorderRadius.circular(10),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey,
+                                blurRadius: 1.0,
+                                // offset: new Offset(1.0, 1.0),
+                              ),
+                            ]
+
+                          ),
+                          // padding: EdgeInsets.only(right: 12),
                           child:
                               // Container()
                               Column(
@@ -522,15 +581,19 @@ class _BodyState extends State<Body> {
                                       alignment: Alignment.center,
                                       child: GestureDetector(
                                         child: Container(
-                                          height: 120,
-                                          width: 120,
-                                          child: new ClipRRect(
+                                          height: 130,
+                                          width: 140,
+                                          padding: EdgeInsets.all(0.1),
+                                          child: 
+                                          new ClipRRect(
                                             borderRadius:
-                                                new BorderRadius.circular(20.0),
+                                                new BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
                                             child: Image.network(
                                               new_data[index]['image'],
                                               fit: BoxFit.fill,
-                                              height: 250,
+                                              height: MediaQuery.of(context)
+                                                  .size
+                                                  .height,
                                               width: MediaQuery.of(context)
                                                   .size
                                                   .width,
@@ -561,16 +624,24 @@ class _BodyState extends State<Body> {
                                     },
                                   ),
                                   Container(
+                                    decoration: BoxDecoration(
+                                      border: Border(
+            top: BorderSide(width: 0.1, color: Colors.black),
+            
+          ),
+                                    ),
                                     padding: EdgeInsets.only(top: 5),
+                                    // alignment: Alignment.centerLeft,
                                     child: Center(
                                       // alignment: Alignment.centerLeft,
                                       // padding: EdgeInsets.only(top: 2, left: 6),
                                       child: Text(
                                         "" + new_data[index]['itemname'] + "",
+                                        //  textAlign: TextAlign.left,
                                         style: TextStyle(
                                             fontFamily: 'HelveticaMedium',
-                                            fontSize: 12,
-                                            color: Colors.blue
+                                            fontSize: 13,
+                                            color: Colors.grey
                                             // fontWeight: FontWeight.bold,
                                             ),
                                       ),
@@ -578,6 +649,7 @@ class _BodyState extends State<Body> {
                                   ),
                                   Container(
                                     alignment: Alignment.centerLeft,
+                                   
                                     padding: EdgeInsets.all(8),
                                     child: Row(
                                       children: <Widget>[
@@ -587,7 +659,7 @@ class _BodyState extends State<Body> {
                                           style: TextStyle(
                                               fontFamily: 'HelveticaMedium',
                                               fontSize: 11,
-                                              color: Colors.red
+                                              color: Colors.grey
 
                                               // fontWeight: FontWeight.bold,
                                               ),
@@ -602,7 +674,7 @@ class _BodyState extends State<Body> {
                                           style: TextStyle(
                                               fontFamily: 'HelveticaMedium',
                                               fontSize: 11,
-                                              color: Colors.orange[300]
+                                              color: Colors.grey
 
                                               // fontWeight: FontWeight.bold,
                                               ),
@@ -717,7 +789,7 @@ class _BodyState extends State<Body> {
                 ),
             Container(
               padding: EdgeInsets.only(
-                top: 10,
+                top: 30,
                 bottom: 8,
               ),
               // color: Colors.,
@@ -727,13 +799,13 @@ class _BodyState extends State<Body> {
                     padding: EdgeInsets.only(right: 5),
                     child: GestureDetector(
                       child: Text(
-                        "Best Offers for You ",
+                        "Best Products for You ",
                         style: TextStyle(
-                          fontFamily: 'HelveticaBold',
-                          fontSize: 19,
-                          // fontWeight: FontWeight.bold,
-                          // color: Colors.red,
-                        ),
+                        fontFamily: 'Helvetica',
+                        fontSize: 20,
+                        // fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
                       ),
                       // onTap: () => {
                       //       Navigator.push(
@@ -793,7 +865,7 @@ class _BodyState extends State<Body> {
               ),
             ),
             Container(
-                height: 200,
+                height: 180,
                 //  width: 160,
                 child: FutureBuilder(
                   future: DefaultAssetBundle.of(context)
@@ -809,7 +881,16 @@ class _BodyState extends State<Body> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
-                          width: 180,
+                          decoration: BoxDecoration(
+                            // border: Border.all(
+                            //   color: Colors.black,
+                            //   width: 0.1
+                            // )
+                            // color: Colors
+                          ),
+                          height: 150,
+                                        width: 150,
+                                        margin: EdgeInsets.only(left: 5,right: 5),
                           // padding: EdgeInsets.only(right: 12),
                           child:
                               // Container()
@@ -822,19 +903,21 @@ class _BodyState extends State<Body> {
                                     child: GestureDetector(
                                       child: Container(
                                         height: 150,
-                                        width: 170,
-                                        child: new ClipRRect(
-                                          borderRadius:
-                                              new BorderRadius.circular(20.0),
+                                        width: 150,
+                                        // child: new ClipRRect(
+                                          // borderRadius:
+                                              // new BorderRadius.circular(20.0),
                                           child: Image.network(
                                             new_data[index]['image'],
                                             fit: BoxFit.fill,
-                                            height: 250,
+                                            height: MediaQuery.of(context)
+                                                .size
+                                                .height,
                                             width: MediaQuery.of(context)
                                                 .size
                                                 .width,
                                           ),
-                                        ),
+                                        // ),
                                       ),
                                       onTap: () => {
                                         Navigator.push(
@@ -861,56 +944,56 @@ class _BodyState extends State<Body> {
                                       },
                                     ),
                                   ),
-                                  Container(
-                                    padding: EdgeInsets.only(top: 5),
-                                    child: Center(
-                                      // alignment: Alignment.centerLeft,
-                                      // padding: EdgeInsets.only(top: 2, left: 6),
-                                      child: Text(
-                                        "" + new_data[index]['itemname'] + "",
-                                        style: TextStyle(
-                                            fontFamily: 'HelveticaMedium',
-                                            fontSize: 12,
-                                            color: Colors.blue
-                                            // fontWeight: FontWeight.bold,
-                                            ),
-                                      ),
-                                    ),
-                                  ),
-                                  Container(
-                                    alignment: Alignment.centerLeft,
-                                    padding: EdgeInsets.all(8),
-                                    child: Row(
-                                      children: <Widget>[
-                                        Text(
-                                          "" + new_data[index]['price'] + "",
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                              fontFamily: 'HelveticaMedium',
-                                              fontSize: 11,
-                                              color: Colors.red
+                                  // Container(
+                                  //   padding: EdgeInsets.only(top: 5),
+                                  //   child: Center(
+                                  //     // alignment: Alignment.centerLeft,
+                                  //     // padding: EdgeInsets.only(top: 2, left: 6),
+                                  //     child: Text(
+                                  //       "" + new_data[index]['itemname'] + "",
+                                  //       style: TextStyle(
+                                  //           fontFamily: 'HelveticaMedium',
+                                  //           fontSize: 12,
+                                  //           color: Colors.blue
+                                  //           // fontWeight: FontWeight.bold,
+                                  //           ),
+                                  //     ),
+                                  //   ),
+                                  // ),
+                                  // Container(
+                                  //   alignment: Alignment.centerLeft,
+                                  //   padding: EdgeInsets.all(8),
+                                  //   child: Row(
+                                  //     children: <Widget>[
+                                  //       Text(
+                                  //         "" + new_data[index]['price'] + "",
+                                  //         textAlign: TextAlign.left,
+                                  //         style: TextStyle(
+                                  //             fontFamily: 'HelveticaMedium',
+                                  //             fontSize: 11,
+                                  //             color: Colors.red
 
-                                              // fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                        Expanded(
-                                          child: Container(),
-                                          flex: 1,
-                                        ),
-                                        Text(
-                                          "" + new_data[index]['ratting'] + "",
-                                          textAlign: TextAlign.left,
-                                          style: TextStyle(
-                                              fontFamily: 'HelveticaMedium',
-                                              fontSize: 11,
-                                              color: Colors.orange[300]
+                                  //             // fontWeight: FontWeight.bold,
+                                  //             ),
+                                  //       ),
+                                  //       Expanded(
+                                  //         child: Container(),
+                                  //         flex: 1,
+                                  //       ),
+                                  //       Text(
+                                  //         "" + new_data[index]['ratting'] + "",
+                                  //         textAlign: TextAlign.left,
+                                  //         style: TextStyle(
+                                  //             fontFamily: 'HelveticaMedium',
+                                  //             fontSize: 11,
+                                  //             color: Colors.orange[300]
 
-                                              // fontWeight: FontWeight.bold,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  )
+                                  //             // fontWeight: FontWeight.bold,
+                                  //             ),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // )
                                 ],
                               ),
                             ],

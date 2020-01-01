@@ -3,6 +3,8 @@ import 'package:responsive_container/responsive_container.dart';
 import 'dart:ui';
 import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import "../../Navigation/navigation.dart";
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:http/http.dart' as http;
 
 class SignIn extends StatelessWidget {
   @override
@@ -12,6 +14,55 @@ class SignIn extends StatelessWidget {
     double password = emailHeight + 80;
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+
+    final facebookLogin = FacebookLogin();
+
+    _loginWithFB() async {
+    print('facebooklogin callled');
+    final result = await facebookLogin.logIn(['email', 'public_profile']);
+    print("result is: ${result.status}");
+    switch (result.status) {
+      case FacebookLoginStatus.loggedIn:
+        print("LoggedIn");
+        // break;
+        final token = result.accessToken.token;
+        // final graphResponse = await http.get(
+        //     'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=${token}');
+        // AuthCredential credential =
+        //     FacebookAuthProvider.getCredential(accessToken: token);
+
+        // FirebaseUser firebaseUser =
+        //     (await FirebaseAuth.instance.signInWithCredential(credential)).user;
+            
+        print("Access token is ${token}");
+        Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => Navigation()),
+                            );
+
+        // final profile = JSON.jsonDecode(graphResponse.body);
+        // print(profile);
+
+        // setState(() {
+        //   userProfile = profile;
+        //   _isLoggedIn = true;
+        //   name = firebaseUser.email;
+        // });
+        // widget.onSignedIn();
+        break;
+
+      case FacebookLoginStatus.cancelledByUser:
+        print("Cancel");
+        // setState(() => _isLoggedIn = false);
+        break;
+      case FacebookLoginStatus.error:
+        print(result.errorMessage);
+
+    //     setState(() => _isLoggedIn = false);
+    //     break;
+    }
+  }
 
     return Scaffold(
         body: Container(
@@ -190,11 +241,12 @@ class SignIn extends StatelessWidget {
                       children: <Widget>[
                         FacebookSignInButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Navigation()),
-                            );
+                            _loginWithFB();
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => Navigation()),
+                            // );
                           },
                         ),
                         GoogleSignInButton(

@@ -3,6 +3,7 @@ import "../HomeScreen/home.dart";
 import 'package:http/http.dart' as http;
 import 'dart:convert' as JSON;
 import 'package:responsive_container/responsive_container.dart';
+import "../SearchBarScreen/searchBarScreen.dart";
 
 class Navigation extends StatefulWidget {
   // final Map fbData;
@@ -89,60 +90,60 @@ class _NavigationState extends State<Navigation> {
               onTap: () {},
             ),
             ListTile(
-              leading: Icon(Icons.add_shopping_cart),
-              title: Text('Add Deal'),
+              leading: Icon(Icons.menu),
+              title: Text('Home'),
               onTap: () {},
             ),
-            ListTile(
-              leading: Icon(Icons.shopping_basket),
-              title: Text('My deals'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.favorite),
-              title: Text('Faviourites'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.trending_up),
-              title: Text('Trending deals'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.store),
-              title: Text('Stores'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.category),
-              title: Text('Categories'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.add_alert),
-              title: Text('Deal alerts'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.add_box),
-              title: Text('Rewards'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.get_app),
-              title: Text('Refer and Earn'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.money_off),
-              title: Text('Refer and Earn'),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.rate_review),
-              title: Text('Rate the App'),
-              onTap: () {},
-            ),
+            // ListTile(
+            //   leading: Icon(Icons.shopping_basket),
+            //   title: Text('My deals'),
+            //   onTap: () {},
+            // ),
+            // ListTile(
+            //   leading: Icon(Icons.favorite),
+            //   title: Text('Faviourites'),
+            //   onTap: () {},
+            // ),
+            // ListTile(
+            //   leading: Icon(Icons.trending_up),
+            //   title: Text('Trending deals'),
+            //   onTap: () {},
+            // ),
+            // ListTile(
+            //   leading: Icon(Icons.store),
+            //   title: Text('Stores'),
+            //   onTap: () {},
+            // ),
+            // ListTile(
+            //   leading: Icon(Icons.category),
+            //   title: Text('Categories'),
+            //   onTap: () {},
+            // ),
+            // ListTile(
+            //   leading: Icon(Icons.add_alert),
+            //   title: Text('Deal alerts'),
+            //   onTap: () {},
+            // ),
+            // ListTile(
+            //   leading: Icon(Icons.add_box),
+            //   title: Text('Rewards'),
+            //   onTap: () {},
+            // ),
+            // ListTile(
+            //   leading: Icon(Icons.get_app),
+            //   title: Text('Refer and Earn'),
+            //   onTap: () {},
+            // ),
+            // ListTile(
+            //   leading: Icon(Icons.money_off),
+            //   title: Text('Refer and Earn'),
+            //   onTap: () {},
+            // ),
+            // ListTile(
+            //   leading: Icon(Icons.rate_review),
+            //   title: Text('Rate the App'),
+            //   onTap: () {},
+            // ),
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
@@ -165,21 +166,23 @@ class _NavigationState extends State<Navigation> {
               title: Text('Home'),
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.cake),
-              title: Text('Recipie'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.favorite),
-              title: Text('Favourite'),
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text('Settings'),
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.add_shopping_cart),
               title: Text('Cart'),
             ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.search),
+              title: Text('Search'),
+            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.favorite),
+            //   title: Text('Favourite'),
+            // ),
+            
+            
+            BottomNavigationBarItem(
+              icon: Icon(Icons.settings),
+              title: Text('Settings'),
+            )
           ],
         ),
       ),

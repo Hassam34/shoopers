@@ -63,10 +63,10 @@ class ItemShow extends StatelessWidget {
                       widthPercent: 100,
                       padding: EdgeInsets.only(top: videoHeight),
                       child: new Container(
-                        color: Colors.black,
+                        color: Colors.white,
                         child: Image.network(
                           itemImage,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.contain,
                           height: 250,
                           width: MediaQuery.of(context).size.width,
                         ),
@@ -95,8 +95,8 @@ class ItemShow extends StatelessWidget {
                             "" + itemName + "",
                             style: TextStyle(
                                 fontFamily: 'HelveticaMedium',
-                                fontSize: 22,
-                                color: Colors.blue
+                                fontSize: 20,
+                                color: Colors.black
                                 // fontWeight: FontWeight.bold,
                                 ),
                           ),
@@ -106,7 +106,9 @@ class ItemShow extends StatelessWidget {
                           padding: EdgeInsets.only(
                             top: 5,
                           ),
-                          child:Column(children: <Widget>[
+                          child:
+                          Row(children: <Widget>[
+                            Column(children: <Widget>[
                             Row(
                             children: <Widget>[
                               Text(
@@ -135,9 +137,10 @@ class ItemShow extends StatelessWidget {
                              
                             ],
                           ),
-                          Row(children: <Widget>[
-                             Text(
-                                "Ratiing : ",
+                         Row(
+                            children: <Widget>[
+                              Text(
+                                "Ratings:",
                                 textAlign: TextAlign.left,
                                 style: TextStyle(
                                     fontFamily: 'HelveticaMedium',
@@ -149,16 +152,34 @@ class ItemShow extends StatelessWidget {
                               Container(width: 5),
                               Text(
                                 itemRattings,
+                                textAlign: TextAlign.left,
                                 style: TextStyle(
                                     fontFamily: 'HelveticaMedium',
                                     fontSize: 13,
-                                    color: Colors.orange
+                                    color: Colors.red
+
                                     // fontWeight: FontWeight.bold,
                                     ),
                               ),
-                          ],)
+                              Container(width: 40),
+                             
+                            ],
+                          ),
 
+                          ],),
+                           Expanded(flex: 1, child: Container()),
+                          Container(
+                            margin: EdgeInsets.only(right: 10),
+
+                            child: Icon(
+                              Icons.add_shopping_cart,
+                              color: Colors.grey,
+                            size: 35.0,
+                            )
+                            
+                          )
                           ],)
+                          
                            
                         ),
                         Container(
@@ -227,33 +248,33 @@ class ItemShow extends StatelessWidget {
                                 ),
                               ),
                               Expanded(flex: 1, child: Container()),
-                              Container(
-                                // padding: EdgeInsets.only(top: 3),
-                                decoration: new BoxDecoration(
-                                    border: Border.all(
-                                        width: .5, color: Colors.grey),
-                                    //new Color.fromRGBO(255, 0, 0, 0.0),
-                                    borderRadius: new BorderRadius.only(
-                                      topLeft: const Radius.circular(20.0),
-                                      topRight: const Radius.circular(20.0),
-                                      bottomLeft: const Radius.circular(20.0),
-                                      bottomRight: const Radius.circular(20.0),
-                                    ),
-                                    color: Colors.grey),
-                                child: Container(
-                                  padding: EdgeInsets.only(
-                                      right: 5, left: 5, top: 2, bottom: 2),
-                                  child: Text(
-                                    "See All",
-                                    style: TextStyle(
-                                      fontFamily: 'HelveticaMedium',
-                                      fontSize: 10,
-                                      // fontWeight: FontWeight.bold,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                              ),
+                              // Container(
+                              //   // padding: EdgeInsets.only(top: 3),
+                              //   decoration: new BoxDecoration(
+                              //       border: Border.all(
+                              //           width: .5, color: Colors.grey),
+                              //       //new Color.fromRGBO(255, 0, 0, 0.0),
+                              //       borderRadius: new BorderRadius.only(
+                              //         topLeft: const Radius.circular(20.0),
+                              //         topRight: const Radius.circular(20.0),
+                              //         bottomLeft: const Radius.circular(20.0),
+                              //         bottomRight: const Radius.circular(20.0),
+                              //       ),
+                              //       color: Colors.grey),
+                              //   child: Container(
+                              //     padding: EdgeInsets.only(
+                              //         right: 5, left: 5, top: 2, bottom: 2),
+                              //     child: Text(
+                              //       "See All",
+                              //       style: TextStyle(
+                              //         fontFamily: 'HelveticaMedium',
+                              //         fontSize: 10,
+                              //         // fontWeight: FontWeight.bold,
+                              //         color: Colors.white,
+                              //       ),
+                              //     ),
+                              //   ),
+                              // ),
                             ],
                           ),
                         ),
@@ -264,8 +285,9 @@ class ItemShow extends StatelessWidget {
                           child: Text(
                             itemDescription,
                             style: TextStyle(
-                              fontFamily: 'HelveticaMedium',
-                              fontSize: 9,
+                              fontFamily: 'Helvetica',
+                              fontSize: 12,
+                              color: Colors.grey
                               // fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -295,7 +317,7 @@ class ItemShow extends StatelessWidget {
                       Container(
                         // color: Colors.grey,
 
-                        padding: EdgeInsets.all(5),
+                        padding: EdgeInsets.all(10),
                         // color: Colors.,
                         child: Row(
                           children: <Widget>[
@@ -304,10 +326,10 @@ class ItemShow extends StatelessWidget {
                               child: Text(
                                 "Popular Items",
                                 style: TextStyle(
-                                  fontFamily: 'HelveticaBold',
-                                  fontSize: 18,
+                                  fontFamily: 'Helvetica',
+                                  fontSize: 20,
                                   // fontWeight: FontWeight.bold,
-                                  // color: Colors.red,
+                                  color: Colors.black,
                                 ),
                               ),
                             ),
@@ -315,42 +337,42 @@ class ItemShow extends StatelessWidget {
                               flex: 1,
                               child: Container(
                                 height: 1,
-                                decoration: new BoxDecoration(
-                                    border: Border.all(
-                                        width: 1, color: Colors.grey[300]),
-                                    //new Color.fromRGBO(255, 0, 0, 0.0),
-                                    borderRadius: new BorderRadius.only(
-                                      topLeft: const Radius.circular(20.0),
-                                      topRight: const Radius.circular(20.0),
-                                      bottomLeft: const Radius.circular(20.0),
-                                      bottomRight: const Radius.circular(20.0),
-                                    ),
-                                    color: Colors.grey[300]),
+                                // decoration: new BoxDecoration(
+                                //     border: Border.all(
+                                //         width: 1, color: Colors.grey[300]),
+                                //     //new Color.fromRGBO(255, 0, 0, 0.0),
+                                //     borderRadius: new BorderRadius.only(
+                                //       topLeft: const Radius.circular(20.0),
+                                //       topRight: const Radius.circular(20.0),
+                                //       bottomLeft: const Radius.circular(20.0),
+                                //       bottomRight: const Radius.circular(20.0),
+                                //     ),
+                                //     color: Colors.grey[300]),
                               ),
                             ),
                             Container(
                               // padding: EdgeInsets.only(top: 3),
-                              decoration: new BoxDecoration(
-                                  border: Border.all(
-                                      width: .5, color: Colors.grey[100]),
-                                  //new Color.fromRGBO(255, 0, 0, 0.0),
-                                  borderRadius: new BorderRadius.only(
-                                    topLeft: const Radius.circular(20.0),
-                                    topRight: const Radius.circular(20.0),
-                                    bottomLeft: const Radius.circular(20.0),
-                                    bottomRight: const Radius.circular(20.0),
-                                  ),
-                                  color: Colors.grey[100]),
+                              // decoration: new BoxDecoration(
+                              //     border: Border.all(
+                              //         width: .5, color: Colors.grey[100]),
+                              //     //new Color.fromRGBO(255, 0, 0, 0.0),
+                              //     borderRadius: new BorderRadius.only(
+                              //       topLeft: const Radius.circular(20.0),
+                              //       topRight: const Radius.circular(20.0),
+                              //       bottomLeft: const Radius.circular(20.0),
+                              //       bottomRight: const Radius.circular(20.0),
+                              //     ),
+                              //     color: Colors.grey[100]),
                               child: Container(
                                 padding: EdgeInsets.only(
                                     right: 5, left: 5, top: 2, bottom: 2),
                                 child: Text(
                                   "See All",
                                   style: TextStyle(
-                                    fontFamily: 'HelveticaMedium',
-                                    fontSize: 18,
+                                    fontFamily: 'Helvetica',
+                                    fontSize: 15,
                                     // fontWeight: FontWeight.bold,
-                                    color: Colors.grey,
+                                    color: Colors.red,
                                   ),
                                 ),
                               ),
@@ -360,6 +382,7 @@ class ItemShow extends StatelessWidget {
                       ),
                       Container(
                         height: 150,
+                        padding: EdgeInsets.only(left: 10,right: 10),
                         child: FutureBuilder(
                           future: DefaultAssetBundle.of(context)
                               .loadString('assets/data/dummy.json'),
@@ -392,7 +415,7 @@ class ItemShow extends StatelessWidget {
                                                   child: new ClipRRect(
                                                     borderRadius:
                                                         new BorderRadius
-                                                            .circular(20.0),
+                                                            .circular(10.0),
                                                     child: Image.network(
                                                       new_data[index]['image'],
                                                       fit: BoxFit.fill,
@@ -448,53 +471,73 @@ class ItemShow extends StatelessWidget {
                                                     fontFamily:
                                                         'HelveticaMedium',
                                                     fontSize: 12,
-                                                    color: Colors.blue
+                                                    color: Colors.black
                                                     // fontWeight: FontWeight.bold,
                                                     ),
                                               ),
                                             ),
                                           ),
                                           Container(
-                                            alignment: Alignment.centerLeft,
-                                            padding: EdgeInsets.all(8),
-                                            child: Row(
-                                              children: <Widget>[
-                                                Text(
-                                                  "" +
-                                                      new_data[index]['price'] +
-                                                      "",
-                                                  textAlign: TextAlign.left,
-                                                  style: TextStyle(
-                                                      fontFamily:
-                                                          'HelveticaMedium',
-                                                      fontSize: 11,
-                                                      color: Colors.red
-
-                                                      // fontWeight: FontWeight.bold,
-                                                      ),
-                                                ),
-                                                Expanded(
-                                                  child: Container(),
-                                                  flex: 1,
-                                                ),
-                                                Text(
-                                                  "" +
-                                                      new_data[index]
-                                                          ['ratting'] +
-                                                      "",
-                                                  textAlign: TextAlign.left,
-                                                  style: TextStyle(
-                                                      fontFamily:
-                                                          'HelveticaMedium',
-                                                      fontSize: 11,
-                                                      color: Colors.orange[300]
-
-                                                      // fontWeight: FontWeight.bold,
-                                                      ),
-                                                ),
-                                              ],
+                                            // padding: EdgeInsets.only(top: 5),
+                                            child: Center(
+                                              // alignment: Alignment.centerLeft,
+                                              // padding: EdgeInsets.only(top: 2, left: 6),
+                                              child: Text(
+                                                "(" +
+                                                    new_data[index]
+                                                        ['price'] +
+                                                    ")",
+                                                style: TextStyle(
+                                                    fontFamily:
+                                                        'HelveticaMedium',
+                                                    fontSize: 12,
+                                                    color: Colors.grey
+                                                    // fontWeight: FontWeight.bold,
+                                                    ),
+                                              ),
                                             ),
                                           )
+                                          // Container(
+                                          //   alignment: Alignment.centerLeft,
+                                          //   padding: EdgeInsets.all(8),
+                                          //   child: Row(
+                                          //     children: <Widget>[
+                                          //       Text(
+                                          //         "" +
+                                          //             new_data[index]['price'] +
+                                          //             "",
+                                          //         textAlign: TextAlign.left,
+                                          //         style: TextStyle(
+                                          //             fontFamily:
+                                          //                 'HelveticaMedium',
+                                          //             fontSize: 11,
+                                          //             color: Colors.red
+
+                                          //             // fontWeight: FontWeight.bold,
+                                          //             ),
+                                          //       ),
+                                          //       Expanded(
+                                          //         child: Container(),
+                                          //         flex: 1,
+                                          //       ),
+                                          //       Text(
+                                          //         "" +
+                                          //             new_data[index]
+                                          //                 ['ratting'] +
+                                          //             "",
+                                          //         textAlign: TextAlign.left,
+                                          //         style: TextStyle(
+                                          //             fontFamily:
+                                          //                 'HelveticaMedium',
+                                          //             fontSize: 11,
+                                          //             color: Colors.orange[300]
+
+                                          //             // fontWeight: FontWeight.bold,
+                                          //             ),
+                                          //       ),
+                                          //     ],
+                                          //   ),
+                                          // )
                                           // )
                                         ],
                                       ),
