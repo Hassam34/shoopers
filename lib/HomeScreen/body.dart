@@ -3,11 +3,13 @@ import 'package:flappy_search_bar/search_bar_style.dart';
 import "package:flutter/material.dart";
 import 'package:responsive_container/responsive_container.dart';
 import 'package:http/http.dart' as http;
+import 'package:vloggerpk/PopularItems/PopularItemsHome.dart';
 import 'dart:convert';
 import "./VideoplayerScreen/videoplayer.dart";
 import 'package:video_player/video_player.dart';
 import "../SearchBarScreen/searchBarScreen.dart";
 import '../CategoryScreen/category.dart';
+import "../CategoryScreen/allCategories.dart";
 
 // import '../VideoPlayingSetiings/videoPlayingSettings.dart';
 
@@ -190,7 +192,7 @@ class _BodyState extends State<Body> {
                       style: TextStyle(
                         fontFamily: 'Helvetica',
                         fontSize: 20,
-                        // fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),
                     ),
@@ -227,14 +229,24 @@ class _BodyState extends State<Body> {
                     child: Container(
                       padding:
                           EdgeInsets.only(right: 5, left: 5, top: 2, bottom: 2),
-                      child: Text(
-                        "See all",
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          fontSize: 15,
-                          // fontWeight: FontWeight.bold,
-                          color: Colors.red,
+                      child: GestureDetector(
+                        child: Text(
+                          "See all",
+                          style: TextStyle(
+                            fontFamily: 'Helvetica',
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                          ),
                         ),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => AllCategoryScreen(),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ),
@@ -261,21 +273,20 @@ class _BodyState extends State<Body> {
                           // width: 100,
                           margin: EdgeInsets.only(left: 10, right: 10),
                           decoration: BoxDecoration(
-                            color: Colors.grey[100],
-                            borderRadius: BorderRadius.circular(10),
-                            border: Border.all(
-                              color: Colors.grey,
-                              width:
-                                  0.2, //                   <--- border width here
-                            ),
-                            boxShadow: [
-                              BoxShadow(
+                              color: Colors.grey[100],
+                              borderRadius: BorderRadius.circular(10),
+                              border: Border.all(
                                 color: Colors.grey,
-                                blurRadius: 4.0,
-                                offset: new Offset(1.0, 1.0),
+                                width:
+                                    0.2, //                   <--- border width here
                               ),
-                            ]
-                          ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 4.0,
+                                  offset: new Offset(1.0, 1.0),
+                                ),
+                              ]),
                           // padding: EdgeInsets.only(right: 12),
                           child:
                               // Container()
@@ -329,33 +340,27 @@ class _BodyState extends State<Body> {
                                     child: Container(
                                       height: 20,
                                       decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        border: Border.all(
-                                          width: 0.1
-                                        )
-                                        // Colors.black.withOpacity(0.5)
+                                          color: Colors.white,
+                                          border: Border.all(width: 0.1)
+                                          // Colors.black.withOpacity(0.5)
+                                          ),
+                                      child: Center(
+                                        // alignment: Alignment.centerLeft,
+                                        // padding: EdgeInsets.only(top: 2, left: 6),
+                                        child: Text(
+                                          "" + new_data[index]['category'] + "",
+                                          style: TextStyle(
+                                              fontFamily: 'HelveticaMedium',
+                                              fontSize: 12,
+                                              color: Colors.black
+                                              // fontWeight: FontWeight.bold,
+                                              ),
+                                        ),
                                       ),
-                                      child: 
-                                      Center(
-                                      // alignment: Alignment.centerLeft,
-                                      // padding: EdgeInsets.only(top: 2, left: 6),
-                                      child: Text(
-                                        "" + new_data[index]['category'] + "",
-                                        style: TextStyle(
-                                            fontFamily: 'HelveticaMedium',
-                                            fontSize: 12,
-                                            color: Colors.black
-                                            // fontWeight: FontWeight.bold,
-                                            ),
-                                      ),
-                                    ),
-                                      
-                                      
                                     ),
                                     bottom: 0,
                                     left: 0,
                                     right: 0,
-                                    
                                   ),
                                 ],
                               ),
@@ -486,10 +491,10 @@ class _BodyState extends State<Body> {
                     padding: EdgeInsets.only(right: 5),
                     child: Text(
                       "Popular Items",
-                       style: TextStyle(
+                      style: TextStyle(
                         fontFamily: 'Helvetica',
                         fontSize: 20,
-                        // fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.bold,
                         color: Colors.black,
                       ),
                     ),
@@ -498,7 +503,7 @@ class _BodyState extends State<Body> {
                     flex: 1,
                     child: Container(
                       height: 1,
-                      ),
+                    ),
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 5),
@@ -515,14 +520,24 @@ class _BodyState extends State<Body> {
                     child: Container(
                       padding:
                           EdgeInsets.only(right: 5, left: 5, top: 2, bottom: 2),
-                      child: Text(
-                        "See all",
-                        style: TextStyle(
-                          fontFamily: 'Helvetica',
-                          fontSize: 15,
-                          // fontWeight: FontWeight.bold,
-                          color: Colors.red,
+                      child: GestureDetector(
+                        child: Text(
+                          "See all",
+                          style: TextStyle(
+                            fontFamily: 'Helvetica',
+                            fontSize: 15,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.red,
+                          ),
                         ),
+                        onTap: (){
+                          Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => PopularItemsHome()
+                                        ),
+                                      );
+                        },
                       ),
                     ),
                   ),
@@ -532,11 +547,8 @@ class _BodyState extends State<Body> {
             Container(
                 height: 190,
                 padding: EdgeInsets.only(bottom: 5),
-                
-                decoration: BoxDecoration(border: Border.all(
-                  color:Colors.grey[50],
-                  width: 1
-                )),
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey[50], width: 1)),
                 child: FutureBuilder(
                   future: DefaultAssetBundle.of(context)
                       .loadString('assets/data/dummy.json'),
@@ -551,24 +563,19 @@ class _BodyState extends State<Body> {
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
                           width: 140,
-                          margin: EdgeInsets.only(left: 10,right: 10),
+                          margin: EdgeInsets.only(left: 10, right: 10),
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            border: Border.all(
-                              color: Colors.black,
-                              width: 0.1
-                            ),
-                            
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey,
-                                blurRadius: 1.0,
-                                // offset: new Offset(1.0, 1.0),
-                              ),
-                            ]
-
-                          ),
+                              color: Colors.white,
+                              border:
+                                  Border.all(color: Colors.black, width: 0.1),
+                              borderRadius: BorderRadius.circular(10),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  blurRadius: 1.0,
+                                  // offset: new Offset(1.0, 1.0),
+                                ),
+                              ]),
                           // padding: EdgeInsets.only(right: 12),
                           child:
                               // Container()
@@ -584,10 +591,10 @@ class _BodyState extends State<Body> {
                                           height: 130,
                                           width: 140,
                                           padding: EdgeInsets.all(0.1),
-                                          child: 
-                                          new ClipRRect(
-                                            borderRadius:
-                                                new BorderRadius.only(topLeft: Radius.circular(10),topRight: Radius.circular(10)),
+                                          child: new ClipRRect(
+                                            borderRadius: new BorderRadius.only(
+                                                topLeft: Radius.circular(10),
+                                                topRight: Radius.circular(10)),
                                             child: Image.network(
                                               new_data[index]['image'],
                                               fit: BoxFit.fill,
@@ -626,9 +633,9 @@ class _BodyState extends State<Body> {
                                   Container(
                                     decoration: BoxDecoration(
                                       border: Border(
-            top: BorderSide(width: 0.1, color: Colors.black),
-            
-          ),
+                                        top: BorderSide(
+                                            width: 0.1, color: Colors.black),
+                                      ),
                                     ),
                                     padding: EdgeInsets.only(top: 5),
                                     // alignment: Alignment.centerLeft,
@@ -649,7 +656,6 @@ class _BodyState extends State<Body> {
                                   ),
                                   Container(
                                     alignment: Alignment.centerLeft,
-                                   
                                     padding: EdgeInsets.all(8),
                                     child: Row(
                                       children: <Widget>[
@@ -801,11 +807,11 @@ class _BodyState extends State<Body> {
                       child: Text(
                         "Best Products for You ",
                         style: TextStyle(
-                        fontFamily: 'Helvetica',
-                        fontSize: 20,
-                        // fontWeight: FontWeight.bold,
-                        color: Colors.black,
-                      ),
+                          fontFamily: 'Helvetica',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black,
+                        ),
                       ),
                       // onTap: () => {
                       //       Navigator.push(
@@ -882,15 +888,15 @@ class _BodyState extends State<Body> {
                       itemBuilder: (BuildContext context, int index) {
                         return Container(
                           decoration: BoxDecoration(
-                            // border: Border.all(
-                            //   color: Colors.black,
-                            //   width: 0.1
-                            // )
-                            // color: Colors
-                          ),
+                              // border: Border.all(
+                              //   color: Colors.black,
+                              //   width: 0.1
+                              // )
+                              // color: Colors
+                              ),
                           height: 150,
-                                        width: 150,
-                                        margin: EdgeInsets.only(left: 5,right: 5),
+                          width: 150,
+                          margin: EdgeInsets.only(left: 5, right: 5),
                           // padding: EdgeInsets.only(right: 12),
                           child:
                               // Container()
@@ -904,9 +910,9 @@ class _BodyState extends State<Body> {
                                       child: Container(
                                         height: 150,
                                         width: 150,
-                                        // child: new ClipRRect(
-                                          // borderRadius:
-                                              // new BorderRadius.circular(20.0),
+                                        child: new ClipRRect(
+                                          borderRadius:
+                                              new BorderRadius.circular(20.0),
                                           child: Image.network(
                                             new_data[index]['image'],
                                             fit: BoxFit.fill,
@@ -917,7 +923,7 @@ class _BodyState extends State<Body> {
                                                 .size
                                                 .width,
                                           ),
-                                        // ),
+                                        ),
                                       ),
                                       onTap: () => {
                                         Navigator.push(

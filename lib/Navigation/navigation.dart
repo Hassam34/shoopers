@@ -1,9 +1,13 @@
 import "package:flutter/material.dart";
+import 'package:vloggerpk/CategoryScreen/allCategories.dart';
+import 'package:vloggerpk/Login/SimpleLogin/signIn.dart';
 import "../HomeScreen/home.dart";
 import 'package:http/http.dart' as http;
 import 'dart:convert' as JSON;
 import 'package:responsive_container/responsive_container.dart';
-import "../SearchBarScreen/searchBarScreen.dart";
+import "../SearchBarScreen/searchBarBody.dart";
+import "../Cart/Cart.dart";
+import '../PopularItems/popularItems.dart';
 
 class Navigation extends StatefulWidget {
   // final Map fbData;
@@ -18,7 +22,12 @@ class Navigation extends StatefulWidget {
 
 class _NavigationState extends State<Navigation> {
   int _currentIndex = 0;
-  final List<Widget> _children = [Home(), Home(), Home(), Home(), Home()];
+  final List<Widget> _children = [
+    Home(),
+    SearchBodyNew(),
+    PopularItems(),
+    Cart()
+  ];
   void onTap(int index) {
     // print(widget.showddd);
     setState(() {
@@ -44,7 +53,7 @@ class _NavigationState extends State<Navigation> {
           backgroundColor: Colors.grey[300],
           title: Container(
             child: Text(
-              "Discover",
+              "Shoppers",
               textAlign: TextAlign.start,
               style: TextStyle(
                   fontFamily: 'HelveticaBold',
@@ -75,30 +84,50 @@ class _NavigationState extends State<Navigation> {
                       color: Colors.white,
                     ),
                     Container(
-                    padding: EdgeInsets.all(20),
-                      child:Text("user@gamil.com",style:TextStyle(color: Colors.white, fontSize: 12) ,) ,)
+                      padding: EdgeInsets.all(20),
+                      child: Text(
+                        "user@gamil.com",
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                    )
                   ],
                 ),
               ),
               decoration: BoxDecoration(
-                color: Colors.blue,
+                color: Colors.grey,
               ),
             ),
-            ListTile(
-              leading: Icon(Icons.person),
-              title: Text('Profile'),
-              onTap: () {},
-            ),
+            
             ListTile(
               leading: Icon(Icons.menu),
               title: Text('Home'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => Navigation()),
+                );
+              },
             ),
-            // ListTile(
-            //   leading: Icon(Icons.shopping_basket),
-            //   title: Text('My deals'),
-            //   onTap: () {},
-            // ),
+            ListTile(
+              leading: Icon(Icons.trending_up),
+              title: Text('Trending'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => PopularItems()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.search),
+              title: Text('Search'),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchBodyNew()),
+                );
+              },
+            ),
             // ListTile(
             //   leading: Icon(Icons.favorite),
             //   title: Text('Faviourites'),
@@ -147,7 +176,12 @@ class _NavigationState extends State<Navigation> {
             ListTile(
               leading: Icon(Icons.exit_to_app),
               title: Text('Logout'),
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignIn()),
+                );
+              },
             ),
           ],
         ),
@@ -165,23 +199,23 @@ class _NavigationState extends State<Navigation> {
               icon: Icon(Icons.home),
               title: Text('Home'),
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.add_shopping_cart),
-              title: Text('Cart'),
-            ),
+
             BottomNavigationBarItem(
               icon: Icon(Icons.search),
               title: Text('Search'),
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.trending_up),
+              title: Text('Trending'),
             ),
             // BottomNavigationBarItem(
             //   icon: Icon(Icons.favorite),
             //   title: Text('Favourite'),
             // ),
-            
-            
+
             BottomNavigationBarItem(
-              icon: Icon(Icons.settings),
-              title: Text('Settings'),
+              icon: Icon(Icons.add_shopping_cart),
+              title: Text('Cart'),
             )
           ],
         ),

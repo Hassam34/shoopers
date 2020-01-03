@@ -1,42 +1,35 @@
 {
   "project_info": {
-    "project_number": "400209752052",
-    "firebase_url": "https://vloggerspk.firebaseio.com",
-    "project_id": "vloggerspk",
-    "storage_bucket": "vloggerspk.appspot.com"
+    "project_number": "1095492720257",
+    "firebase_url": "https://shooper-fd5d8.firebaseio.com",
+    "project_id": "shooper-fd5d8",
+    "storage_bucket": "shooper-fd5d8.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:400209752052:android:770ff96789e502425493a1",
+        "mobilesdk_app_id": "1:1095492720257:android:f2b919eaf0b215e8b29f80",
         "android_client_info": {
           "package_name": "com.example.vloggerpk"
         }
       },
       "oauth_client": [
         {
-          "client_id": "400209752052-cdbnhgqdt00qvs3ukqd6c9f1f6e3smem.apps.googleusercontent.com",
+          "client_id": "1095492720257-2fubo1jj4mbkrb4j15fecjo4e20frbhj.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAKy4Iq3mxDVFZimMN_QvZHNVAHkNSg9VE"
+          "current_key": "AIzaSyDKLHR2BYL3KXJtOOQUK2Vw6yRBVao7gTo"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "400209752052-cdbnhgqdt00qvs3ukqd6c9f1f6e3smem.apps.googleusercontent.com",
+              "client_id": "1095492720257-2fubo1jj4mbkrb4j15fecjo4e20frbhj.apps.googleusercontent.com",
               "client_type": 3
-            },
-            {
-              "client_id": "400209752052-9jn401nv5ffra1rllb1ar1nfnmteben2.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.vloggerpk"
-              }
             }
           ]
         }

@@ -5,6 +5,8 @@ import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 import "../../Navigation/navigation.dart";
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:http/http.dart' as http;
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class SignIn extends StatelessWidget {
   @override
@@ -16,56 +18,95 @@ class SignIn extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
 
     final facebookLogin = FacebookLogin();
+    // final FirebaseAuth _auth = FirebaseAuth.instance;
 
     _loginWithFB() async {
-    print('facebooklogin callled');
-    final result = await facebookLogin.logIn(['email', 'public_profile']);
-    print("result is: ${result.status}");
-    switch (result.status) {
-      case FacebookLoginStatus.loggedIn:
-        print("LoggedIn");
-        // break;
-        final token = result.accessToken.token;
-        // final graphResponse = await http.get(
-        //     'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=${token}');
-        // AuthCredential credential =
-        //     FacebookAuthProvider.getCredential(accessToken: token);
-
-        // FirebaseUser firebaseUser =
-        //     (await FirebaseAuth.instance.signInWithCredential(credential)).user;
-            
-        print("Access token is ${token}");
-        Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Navigation()),
-                            );
-
-        // final profile = JSON.jsonDecode(graphResponse.body);
-        // print(profile);
-
-        // setState(() {
-        //   userProfile = profile;
-        //   _isLoggedIn = true;
-        //   name = firebaseUser.email;
-        // });
-        // widget.onSignedIn();
-        break;
-
-      case FacebookLoginStatus.cancelledByUser:
-        print("Cancel");
-        // setState(() => _isLoggedIn = false);
-        break;
-      case FacebookLoginStatus.error:
-        print(result.errorMessage);
-
-    //     setState(() => _isLoggedIn = false);
-    //     break;
+      print('facebooklogin callled');
+      final result = await facebookLogin.logIn(['email', 'public_profile']);
+      print("result is: ${result.status}");
+      switch (result.status) {
+        case FacebookLoginStatus.loggedIn:
+          print("LoggedIn");
+          // break;
+          final token = result.accessToken.token;
+          print("Access token is ${token}");
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Navigation()),
+          );
+          break;
+        case FacebookLoginStatus.cancelledByUser:
+          print("Cancel");
+          break;
+        case FacebookLoginStatus.error:
+          print(result.errorMessage);
+      }
     }
-  }
+
+    final FirebaseAuth _auth = FirebaseAuth.instance;
+    final GoogleSignIn googleSignIn = new GoogleSignIn();
+
+    Future<FirebaseUser> signInWithGoogle() async {
+      final GoogleSignInAccount googleSignInAccount =
+          await googleSignIn.signIn();
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
+
+      final AuthCredential credential = GoogleAuthProvider.getCredential(
+        accessToken: googleSignInAuthentication.accessToken,
+        idToken: googleSignInAuthentication.idToken,
+      );
+
+      final AuthResult authResult =
+          await _auth.signInWithCredential(credential);
+      final FirebaseUser user = authResult.user;
+      print(user.displayName.toString());
+      assert(!user.isAnonymous);
+      assert(await user.getIdToken() != null);
+
+      final FirebaseUser currentUser = await _auth.currentUser();
+      assert(user.uid == currentUser.uid);
+
+      return user;
+    }
+    Future<bool> loginWithGoogle() async {
+      try {
+        GoogleSignIn googleSignIn = GoogleSignIn();
+        GoogleSignInAccount account = await googleSignIn.signIn();
+        if (account == null) return false;
+        AuthResult res =
+            await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
+          idToken: (await account.authentication).idToken,
+          accessToken: (await account.authentication).accessToken,
+        ));
+        print("result is ${res}");
+        if (res.user == null)
+          return false;
+        else {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => Navigation()),
+          );
+          return true;
+        }
+      } catch (e) {
+        print("Error logging with google ${e}");
+        return false;
+      }
+    }
+
+    _loginWithGoogle() async {
+      // GoogleSignIn _googleSignIn = GoogleSignIn(
+      //   scopes: [
+      //     'email',
+      //     'https://www.googleapis.com/auth/contacts.readonly',
+      //   ],
+      // );
+    }
 
     return Scaffold(
         body: Container(
+          color:Color(0xfff7f7f7),
       width: width,
       child: new Stack(
         children: <Widget>[
@@ -128,8 +169,8 @@ class SignIn extends StatelessWidget {
                             // width: 190,
                             child: new Container(
                               decoration: new BoxDecoration(
-                                border:
-                                    Border.all(width: .5, color: Colors.grey),
+                                // border:
+                                //     Border.all(width: .5, color: Colors.grey),
                                 borderRadius: new BorderRadius.only(
                                   topLeft: const Radius.circular(5.0),
                                   topRight: const Radius.circular(5.0),
@@ -138,7 +179,7 @@ class SignIn extends StatelessWidget {
                                 ),
                                 image: new DecorationImage(
                                   image: ExactAssetImage(
-                                      'assets/images/thumbnail.png'),
+                                      'assets/images/cover.jpeg'),
                                   fit: BoxFit.fitHeight,
                                 ),
                               ),
@@ -234,7 +275,7 @@ class SignIn extends StatelessWidget {
                         ),
                   ),
                   ResponsiveContainer(
-                    heightPercent: 15,
+                    heightPercent: 17,
                     widthPercent: 100,
                     child: Column(
                       // color: Colors.deepOrange,
@@ -251,18 +292,20 @@ class SignIn extends StatelessWidget {
                         ),
                         GoogleSignInButton(
                           onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => Navigation()),
-                            );
+                            loginWithGoogle();
+                            // signInWithGoogle();
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(
+                            //       builder: (context) => Navigation()),
+                            // );
                           },
                         )
                       ],
                     ),
                   ),
                   ResponsiveContainer(
-                    heightPercent: 4,
+                    heightPercent: 2,
                     widthPercent: 100,
                     child: Center(
                         // color: Colors.redAccent,
@@ -308,33 +351,34 @@ class SignIn extends StatelessWidget {
                     heightPercent: 7,
                     widthPercent: 70,
                     child: Container(
-                        padding: EdgeInsets.only(left: 30),
-                        child: Column(
-                          children: <Widget>[
-                            Center(
-                              // color: Colors.lightBlue,
-                              child: Text(
-                                "ALready have account then simply click facebook or Google button to LogIn",
-                                textAlign: TextAlign.start,
-                                style: TextStyle(
-                                    fontFamily: 'HelveticaBold',
-                                    // color: Colors.grey,
-                                    fontSize: 10),
-                              ),
+                      padding: EdgeInsets.only(left: 30),
+                      child: Column(
+                        children: <Widget>[
+                          Center(
+                            // color: Colors.lightBlue,
+                            child: Text(
+                              "ALready have account then simply click facebook or Google button to LogIn",
+                              textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  fontFamily: 'HelveticaBold',
+                                  // color: Colors.grey,
+                                  fontSize: 10),
                             ),
-                            // Center(
-                            //   // color: Colors.lightBlue,
-                            //   child: Text(
-                            //       "Log In",
-                            //       textAlign: TextAlign.start,
-                            //       style: TextStyle(
-                            //           fontFamily: 'HelveticaBold',
-                            //           // color: Colors.grey,
-                            //           fontSize: 12),
-                            //     ),
-                            // ),
-                          ],
-                        )),
+                          ),
+                          // Center(
+                          //   // color: Colors.lightBlue,
+                          //   child: Text(
+                          //       "Log In",
+                          //       textAlign: TextAlign.start,
+                          //       style: TextStyle(
+                          //           fontFamily: 'HelveticaBold',
+                          //           // color: Colors.grey,
+                          //           fontSize: 12),
+                          //     ),
+                          // ),
+                        ],
+                      ),
+                    ),
                   ),
                 ],
               ),
